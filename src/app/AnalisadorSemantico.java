@@ -31,7 +31,6 @@ public class AnalisadorSemantico {
         walker.walk(listener, ast);
     }
 
-
     private static GramaticaParser getParser(String fileName) {
             GramaticaParser parser = null;
 

@@ -1,0 +1,13 @@
+:declaracao
+int var1;
+float var2;
+string var3;
+bool var4;
+int var1;
+
+:programa
+var1 = 2;
+var2 = 1.5;
+var1 = var1+var2;
+var4 = "isso é uma string";
+var4 = var1>var2;

@@ -1,0 +1,17 @@
+T__0=1
+T__1=2
+T__2=3
+T__3=4
+TIPO=5
+ID=6
+WS=7
+NUM=8
+STR=9
+True=10
+False=11
+BOL=12
+OPERADOR=13
+':declaracao'=1
+';'=2
+':programa'=3
+'='=4

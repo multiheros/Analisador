@@ -3,24 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="35723205-a32e-40ee-babc-706ef375179d" name="Changes" comment="iniciado repositorio">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/antlr/Gramatica.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr/Gramatica.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/antlr/GramaticaLexer.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr/GramaticaLexer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/antlr/GramaticaLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr/GramaticaLexer.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/antlr/GramaticaLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr/GramaticaLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/antlr/GramaticaParser$BlocoDeclaracaoContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr/GramaticaParser$BlocoDeclaracaoContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/antlr/GramaticaParser$BlocoProgramaContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr/GramaticaParser$BlocoProgramaContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/antlr/GramaticaParser$DeclContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr/GramaticaParser$DeclContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/antlr/GramaticaParser$DeclaracaoContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr/GramaticaParser$DeclaracaoContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/antlr/GramaticaParser$InstrContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr/GramaticaParser$InstrContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/antlr/GramaticaParser$NAtribuicaoContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr/GramaticaParser$NAtribuicaoContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/antlr/GramaticaParser$NDeclaracaoContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr/GramaticaParser$NDeclaracaoContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/antlr/GramaticaParser$NInicioContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr/GramaticaParser$NInicioContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/antlr/GramaticaParser$NOperacaoContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr/GramaticaParser$NOperacaoContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/antlr/GramaticaParser$OperacaoContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr/GramaticaParser$OperacaoContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/antlr/GramaticaParser$OperandoContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr/GramaticaParser$OperandoContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/antlr/GramaticaParser$ProgramaContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr/GramaticaParser$ProgramaContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/antlr/GramaticaParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr/GramaticaParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/antlr/GramaticaParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr/GramaticaParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/AnalisadorSemantico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/AnalisadorSemantico.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/MyListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/MyListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/teste/entrada.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/teste/entrada.txt" afterDir="false" />

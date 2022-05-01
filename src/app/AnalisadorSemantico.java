@@ -20,7 +20,7 @@ public class AnalisadorSemantico {
         ParseTree ast = parser.inicio();
 
         // imprime a arvore
-        System.out.println(ast.toStringTree());
+        //System.out.println(ast.toStringTree());
 
         // inicia o MyListener
         MyListener listener = new MyListener();

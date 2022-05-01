@@ -2,54 +2,41 @@ package app;
 
 import antlr.GramaticaBaseListener;
 import antlr.GramaticaParser;
+import org.antlr.v4.runtime.Token;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class MyListener extends GramaticaBaseListener {
 
     private final Map<String, String> tabelaSimbolos = new HashMap<>();
-    private final Map<String, String> atribuicaoVariaveis = new HashMap<>();
-
-    @Override
-    public void enterBlocoDeclaracao(GramaticaParser.BlocoDeclaracaoContext ctx) {
-        System.out.println("\n###############################################################################################################################");
-        System.out.println("# Inicio Bloco Declaracao");
-        System.out.println("###############################################################################################################################\n");
-    }
 
     @Override
     public void exitNDeclaracao(GramaticaParser.NDeclaracaoContext ctx) {
-        System.out.println("declaracao: " + ctx.getText());
+        Token token = ctx.TIPO().getSymbol();
+        int linha = token.getLine();
+
         String tipo = ctx.TIPO().getText();
         String id = ctx.ID().getText();
 
         if (tabelaSimbolos.containsKey(id)) {
-            System.out.println("Bloco declaracao: declaracao duplicada! Variavel " + id + " ja esta declarada");
+            System.out.println("Erro na linha " + linha + ", declaracao duplicada! Variavel " + id + " ja esta declarada");
         } else {
             tabelaSimbolos.put(id, tipo);
         }
     }
 
     @Override
-    public void exitBlocoDeclaracao(GramaticaParser.BlocoDeclaracaoContext ctx) {
-        System.out.println("\n###############################################################################################################################");
-        System.out.println("# Fim Bloco Declaracao");
-        System.out.println("###############################################################################################################################\n");
-    }
-
-    @Override
     public void enterBlocoPrograma(GramaticaParser.BlocoProgramaContext ctx) {
-        System.out.println("\n###############################################################################################################################");
-        System.out.println("# Inicio Bloco Programa");
-        System.out.println("###############################################################################################################################\n");
-
         boolean controle;
         boolean operadorLogico;
         boolean operadorAritimetico;
-        String tipoVarivavel;
+
         String[] result;
         String[] operandos;
+
+        String tipoVarivavel;
         String antigo;
 
         Map<String, String> check = new HashMap<>();
@@ -69,7 +56,7 @@ public class MyListener extends GramaticaBaseListener {
                 // pega os operandos utilizando os operadores lógicas e aritméticos
                 operandos = result[1].split("[-+*><)]");
                 for (String operando : operandos) {
-                    if (operando.matches("[0-9]*\\.[0-9]+")) { // verifica se é um float
+                    if (operando.matches("[0-9]+(\\.[0-9]+)?")) { // verifica se é um float
                         check.put(operando, "float");
                     } else if (operando.chars().allMatch(Character::isDigit)) { // verifica se é um int
                         check.put(operando, "int");
@@ -96,34 +83,31 @@ public class MyListener extends GramaticaBaseListener {
                 operadorLogico = result[1].matches("(([a-zA-Z]+)([a-zA-Z0-9]*)?|[0-9]|\"([^\"]*)\")([<>])(([a-zA-Z]+)([a-zA-Z0-9]*)?|[0-9]|\"([^\"]*)\")");
 
                 // identifica operação aritmetica
-                operadorAritimetico = result[1].matches("(([a-zA-Z]+)([a-zA-Z0-9]*)?|[0-9])([-+*/])(([a-zA-Z]+)([a-zA-Z0-9]*)?|[0-9])");
+                operadorAritimetico = result[1].matches("(([a-zA-Z]+)([a-zA-Z0-9]*)?|[0-9]+(\\.[0-9]+)?)([-+*/])(([a-zA-Z]+)([a-zA-Z0-9]*)?|[0-9]+(\\.[0-9]+)?)");
                 for (String key : check.keySet()) {
-                    controle = false;
                     if (operadorLogico) { // se for operador lógico
-                        if (antigo.length() > 0 && (!check.get(key).equals(check.get(antigo)))) { // se os tipos não forem iguais
+                        if (antigo.length() > 0 && (!logic.contains(check.get(key)) && !logic.contains(check.get(antigo)))) { // verifica os tipos validos
                             System.out.println("Erro na linha " + (linha + i) + ", operadores logicos {<,>} nao aceitam tipos diferentes: " +
                                     "{" + key + ", type:" + check.get(key) + "} e {" + antigo  + ", type:" + check.get(antigo) + "}");
-                            controle = true;
+                            break;
                         }
 
-                        if (antigo.length() > 0 && !controle && !tipoVarivavel.equals("bool")) { // se a atribuição não for do mesmo tipo da variável
+                        if (antigo.length() > 0 && !tipoVarivavel.equals("bool")) { // se a atribuição não for do mesmo tipo da variável
                             System.out.println("Erro na linha " + (linha + i) + ", variavel {" + result[0] + "} do tipo {" + tipoVarivavel +
                                     "} recebendo valor do tipo {bool}");
-                            controle = false;
                             break;
                         }
                         antigo = key;
                     } else if (operadorAritimetico) {
-                        if (antigo.length() > 0 && (!check.get(key).equals(check.get(antigo)))) { // se os tipos não forem iguais
+                        if (antigo.length() > 0 && (!arithmetic.contains(check.get(key)) && !arithmetic.contains(check.get(antigo)))) { // verifica os tipos validos
                             System.out.println("Erro na linha " + (linha + i) + ", operadores aritmeticos {-,+,*,/} nao aceitam tipos diferentes: " +
                                     "{" + key + ", type:" + check.get(key) + "} e {" + antigo  + ", type:" + check.get(antigo) + "}");
-                            controle = true;
+                            break;
                         }
 
-                        if (antigo.length() > 0 && !controle && (!tipoVarivavel.equals("int") | !tipoVarivavel.equals("float"))) { // se a atribuição não for do mesmo tipo da variável
+                        if (antigo.length() > 0 && (!arithmetic.contains(tipoVarivavel))) { // se a atribuição não for do mesmo tipo da variável
                             System.out.println("Erro na linha " + (linha + i) + ", variavel {" + result[0] + "} do tipo {" + tipoVarivavel +
                                     "} recebendo valor do tipo {int}");
-                            controle = false;
                             break;
                         }
                         antigo = key;
@@ -131,15 +115,20 @@ public class MyListener extends GramaticaBaseListener {
                         if (!tipoVarivavel.equals(check.get(key))) {
                             System.out.println("Erro na linha " + (linha + i) + ", variavel {" + result[0] + "} e do tipo {" + tipoVarivavel + "} " +
                                     "e esta recebendo {" + key + "} do tipo {" + check.get(key) + "}");
+                            break;
                         }
                     }
                 }
                 check.clear();
             }
         }
-
-        System.out.println("\n###############################################################################################################################");
-        System.out.println("# Fim Bloco Programa");
-        System.out.println("###############################################################################################################################\n");
     }
+
+    private static final Set<String> arithmetic = Set.of(
+            "int","float"
+    );
+
+    private static final Set<String> logic = Set.of(
+            "int", "float"
+    );
 }

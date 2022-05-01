@@ -11,3 +11,4 @@ var2 = 1.5;
 var1 = var1+var2;
 var4 = "isso é uma string";
 var4 = var1>var2;
+var5 = True;
